@@ -1,6 +1,9 @@
 package suffixtree_tests
 
-import "testing"
+import (
+	"testing"
+	"github.com/jojohannsen/suffixtree"
+)
 
 func TestStringTree(t *testing.T) {
 	testString := "mississippi"
@@ -9,7 +12,7 @@ func TestStringTree(t *testing.T) {
 	incomingChannel := s.STKeys()
 	for _, r := range runes {
 		test := <-incomingChannel
-		if test != suffixtree.STKEY(r) {
+		if test != suffixtree.STKey(r) {
 			t.Error("channel did not provide the expected value")
 		}
 	}

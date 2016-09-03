@@ -23,7 +23,7 @@ func TestBuilder(t *testing.T) {
 		if root.IncomingEdge() != nil {
 			t.Error("root has incoming edge")
 		}
-		if root.suffixLink() != nil {
+		if root.SuffixLink() != nil {
 			t.Error("root has suffix link")
 		}
 	}

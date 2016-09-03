@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"reflect"
 	"testing"
+
 	"github.com/jojohannsen/suffixtree"
 )
 
@@ -322,7 +323,7 @@ func convertToSTKey(runes []rune) []suffixtree.STKey {
 func TestRandomString(t *testing.T) {
 	rand.Seed(1)
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 200; i++ {
 		s := []rune{}
 		s = sliceappend(s, RandStringRunes(i))
 		fmt.Printf("s=%s\n", string(s))
@@ -348,6 +349,7 @@ func TestRandomString(t *testing.T) {
 			result := searcher.Find(convertToSTKey(searchFor))
 			if len(result) == 0 {
 				fmt.Printf("Did not find %s at all\n", string(searchFor))
+				panic("TEST FAILED")
 			} else {
 				foundSuffix := false
 				for j := 0; j < len(result); j++ {
@@ -360,6 +362,7 @@ func TestRandomString(t *testing.T) {
 					for j := 0; j < len(result); j++ {
 						fmt.Printf("  found at %d\n", result[j])
 					}
+					panic("TEST FAILED")
 				}
 			}
 		}
