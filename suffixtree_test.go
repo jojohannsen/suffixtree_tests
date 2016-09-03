@@ -326,26 +326,18 @@ func TestRandomString(t *testing.T) {
 	for i := 0; i < 200; i++ {
 		s := []rune{}
 		s = sliceappend(s, RandStringRunes(i))
-		fmt.Printf("s=%s\n", string(s))
-		/*s := []rune("0eeijeieijj")
-		s = sliceappend(s, RandStringRunes(990))
-		s = sliceappend(s, []rune("mississippi"))
-		//fmt.Println("Len is ", len(s))
-		s = sliceappend(s, RandStringRunes(989))
-		s = sliceappend(s, []rune("mississippi"))
-		s = sliceappend(s, RandStringRunes(100))*/
+		//fmt.Printf("s=%s\n", string(s))
 
 		dataSource := suffixtree.NewRuneDataSource(s)
 		ukkonen := suffixtree.NewUkkonen(dataSource)
 		ukkonen.DrainDataSource()
 		ukkonen.Finish()
 		st := ukkonen.Tree()
-		//treePrintWithTitle(fmt.Sprintf("Test '%s'", string(s)), st.Root(), ukkonen.Location())
 		suffixtree.TreeCheck(st.Root(), dataSource)
 		for i := int64(0); i < int64(len(s)); i++ {
 			searcher := suffixtree.NewSearcher(st.Root(), dataSource)
 			searchFor := s[i:len(s)]
-			fmt.Printf("search for suffix %s\n", string(searchFor))
+			//fmt.Printf("search for suffix %s\n", string(searchFor))
 			result := searcher.Find(convertToSTKey(searchFor))
 			if len(result) == 0 {
 				fmt.Printf("Did not find %s at all\n", string(searchFor))
@@ -366,16 +358,6 @@ func TestRandomString(t *testing.T) {
 				}
 			}
 		}
-		//treePrintWithTitle("test", st.Root(), ukkonen.Location())
-		/*searcher := NewSearcher(st.Root(), dataSource)
-		searchFor := []suffixtree.STKey{}
-		searchFor = append(searchFor, suffixtree.STKey(rune('B')))
-		result := searcher.find(searchFor)
-		if len(result) == 0 {
-			t.Errorf("Expected >1 result, got %d", len(result))
-		} else if result[0] != 0 {
-			t.Errorf("Expected offset 0, got %d", result[0])
-		}*/
 
 	}
 }
