@@ -8,7 +8,7 @@ import (
 )
 
 func TestRootNode(t *testing.T) {
-	var root suffixtree.Node = suffixtree.NewRootNode()
+	var root suffixtree.Node = suffixtree.NewRootNode(1)
 	if root == nil {
 		t.Error("NewRootNode returned nil")
 	}
@@ -24,7 +24,7 @@ func TestRootNode(t *testing.T) {
 }
 
 func TestRootOutgoingEdge(t *testing.T) {
-	root := suffixtree.NewRootNode()
+	root := suffixtree.NewRootNode(1)
 	edge := suffixtree.NewEdge(0, 3)
 	root.AddOutgoingEdgeNode(1000, edge, nil)
 	testEdge := root.EdgeFollowing(1000)
@@ -41,7 +41,7 @@ func TestRootPanic1(t *testing.T) {
 	defer func() {
 		recover()
 	}()
-	root := suffixtree.NewRootNode()
+	root := suffixtree.NewRootNode(1)
 	root.SetSuffixLink(nil)
 	t.Errorf("The code did not panic")
 }
@@ -57,7 +57,8 @@ func TestRootChildren(t *testing.T) {
 		{2, 3, 1003},
 		{3, 3, 1004},
 	}
-	root := suffixtree.NewRootNode()
+	nodeIdFactory := suffixtree.NewNodeIdFactory()
+	root := suffixtree.NewRootNode(nodeIdFactory.NextId())
 	for _, test := range rootTests {
 		edge := suffixtree.NewEdge(test.startOffset, test.endOffset)
 		root.AddOutgoingEdgeNode(test.firstValue, edge, nil)
@@ -88,10 +89,12 @@ func TestInternalChildren(t *testing.T) {
 		{2, 3, 1003},
 		{3, 3, 1004},
 	}
-	root := suffixtree.NewRootNode()
+	idFactory := suffixtree.NewNodeIdFactory()
+	root := suffixtree.NewRootNode(idFactory.NextId())
+
 	for _, test := range internalTests {
 		edge := suffixtree.NewEdge(test.startOffset, test.endOffset)
-		internal := suffixtree.NewInternalNode(root, edge)
+		internal := suffixtree.NewInternalNode(idFactory.NextId(), root, edge)
 		if internal.IncomingEdge() != edge {
 			t.Error("Internal parent not found")
 		}
@@ -129,8 +132,8 @@ func TestLeafOutgoingFollowing(t *testing.T) {
 		recover()
 	}()
 
-	root := suffixtree.NewRootNode()
-	edge, leaf := suffixtree.NewLeafEdgeNode(root, 0)
+	root := suffixtree.NewRootNode(1)
+	edge, leaf := suffixtree.NewLeafEdgeNode(2, root, 0)
 	leaf.AddOutgoingEdgeNode(1000, edge, leaf)
 	t.Errorf("The code did not panic")
 }
@@ -140,8 +143,8 @@ func TestLeafEdgeFollowingPanic(t *testing.T) {
 		recover()
 	}()
 
-	root := suffixtree.NewRootNode()
-	_, leaf := suffixtree.NewLeafEdgeNode(root, 0)
+	root := suffixtree.NewRootNode(1)
+	_, leaf := suffixtree.NewLeafEdgeNode(2, root, 0)
 	leaf.EdgeFollowing(1000)
 	t.Errorf("The code did not panic")
 }
@@ -151,8 +154,8 @@ func TestLeafSuffixLinkPanic(t *testing.T) {
 		recover()
 	}()
 
-	root := suffixtree.NewRootNode()
-	_, leaf := suffixtree.NewLeafEdgeNode(root, 0)
+	root := suffixtree.NewRootNode(1)
+	_, leaf := suffixtree.NewLeafEdgeNode(2, root, 0)
 	leaf.SetSuffixLink(nil)
 	t.Errorf("The code did not panic")
 }
@@ -168,10 +171,11 @@ func TestRootLeaf(t *testing.T) {
 		{2, -1, 1003},
 		{3, -1, 1004},
 	}
-	root := suffixtree.NewRootNode()
+	idFactory := suffixtree.NewNodeIdFactory()
+	root := suffixtree.NewRootNode(idFactory.NextId())
 	for _, test := range rootLeafTests {
 		edge := suffixtree.NewEdge(test.startOffset, test.endOffset)
-		edge, leaf := suffixtree.NewLeafEdgeNode(root, test.startOffset)
+		edge, leaf := suffixtree.NewLeafEdgeNode(idFactory.NextId(), root, test.startOffset)
 		if leaf.IncomingEdge() != edge {
 			t.Error("Leaf parent was NOT edge")
 		}
