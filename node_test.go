@@ -48,8 +48,8 @@ func TestRootPanic1(t *testing.T) {
 
 func TestRootChildren(t *testing.T) {
 	var rootTests = []struct {
-		startOffset int64
-		endOffset   int64
+		startOffset int32
+		endOffset   int32
 		firstValue  suffixtree.STKey
 	}{
 		{0, 3, 1001},
@@ -66,10 +66,10 @@ func TestRootChildren(t *testing.T) {
 	for _, test := range rootTests {
 		testEdge := root.EdgeFollowing(test.firstValue)
 		if testEdge.StartOffset != test.startOffset {
-			t.Error("Edge start offset, got " + strconv.FormatInt(testEdge.StartOffset, 10) + ", want " + strconv.FormatInt(test.startOffset, 10))
+			t.Error("Edge start offset, got " + strconv.FormatInt(int64(testEdge.StartOffset), 10) + ", want " + strconv.FormatInt(int64(test.startOffset), 10))
 		}
 		if testEdge.EndOffset != test.endOffset {
-			t.Error("Edge end offset, got " + strconv.FormatInt(testEdge.EndOffset, 10) + ", want " + strconv.FormatInt(test.endOffset, 10))
+			t.Error("Edge end offset, got " + strconv.FormatInt(int64(testEdge.EndOffset), 10) + ", want " + strconv.FormatInt(int64(test.endOffset), 10))
 		}
 	}
 	testEdge := root.EdgeFollowing(111111)
@@ -80,8 +80,8 @@ func TestRootChildren(t *testing.T) {
 
 func TestInternalChildren(t *testing.T) {
 	var internalTests = []struct {
-		startOffset int64
-		endOffset   int64
+		startOffset int32
+		endOffset   int32
 		firstValue  suffixtree.STKey
 	}{
 		{0, 3, 1001},
@@ -115,10 +115,10 @@ func TestInternalChildren(t *testing.T) {
 	for _, test := range internalTests {
 		testEdge := root.EdgeFollowing(test.firstValue)
 		if testEdge.StartOffset != test.startOffset {
-			t.Error("Edge start offset, got " + strconv.FormatInt(testEdge.StartOffset, 10) + ", want " + strconv.FormatInt(test.startOffset, 10))
+			t.Error("Edge start offset, got " + strconv.FormatInt(int64(testEdge.StartOffset), 10) + ", want " + strconv.FormatInt(int64(test.startOffset), 10))
 		}
 		if testEdge.EndOffset != test.endOffset {
-			t.Error("Edge end offset, got " + strconv.FormatInt(testEdge.EndOffset, 10) + ", want " + strconv.FormatInt(test.endOffset, 10))
+			t.Error("Edge end offset, got " + strconv.FormatInt(int64(testEdge.EndOffset), 10) + ", want " + strconv.FormatInt(int64(test.endOffset), 10))
 		}
 	}
 	testEdge := root.EdgeFollowing(111111)
@@ -162,8 +162,8 @@ func TestLeafSuffixLinkPanic(t *testing.T) {
 
 func TestRootLeaf(t *testing.T) {
 	var rootLeafTests = []struct {
-		startOffset int64
-		endOffset   int64
+		startOffset int32
+		endOffset   int32
 		firstValue  suffixtree.STKey
 	}{
 		{0, -1, 1001},

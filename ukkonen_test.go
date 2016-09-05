@@ -34,8 +34,8 @@ func TestBuilderExtend_1(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 	}
@@ -69,8 +69,8 @@ func TestBuilderExtend_2(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -106,8 +106,8 @@ func TestBuilderExtend_3(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -145,8 +145,8 @@ func TestBuilderExtend_4(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -185,8 +185,8 @@ func TestBuilderExtend_5(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -229,8 +229,8 @@ func TestBuilderExtend_6(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -274,8 +274,8 @@ func TestBuilderExtend_7(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -320,8 +320,8 @@ func TestBuilderExtend_8(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 0, 1, -1},
@@ -367,8 +367,8 @@ func TestBuilderExtend_9(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 2, 1, 1},
@@ -424,8 +424,8 @@ func TestBuilderExtend_10(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 2, 1, 1},
@@ -482,8 +482,8 @@ func TestBuilderExtend_11(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 2, 1, 1},
@@ -543,8 +543,8 @@ func TestBuilderExtend_12(t *testing.T) {
 		title                   string
 		key                     suffixtree.STKey
 		numberOutgoing          int
-		incomingEdgeStartOffset int64
-		incomingEdgeEndOffset   int64
+		incomingEdgeStartOffset int32
+		incomingEdgeEndOffset   int32
 	}{
 		{"root", suffixtree.STKey(rune('m')), 0, 0, -1},
 		{"root", suffixtree.STKey(rune('i')), 2, 1, 1},
