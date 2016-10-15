@@ -28,7 +28,7 @@ func TestFileDataSource(t *testing.T) {
 	fileDataSource := suffixtree.NewFileDataSource("./test_data/mississippi.txt")
 	runes := []rune(fileContents)
 	incomingChannel := fileDataSource.STKeys()
-	for _,r := range runes {
+	for _, r := range runes {
 		test := <-incomingChannel
 		if test != suffixtree.STKey(r) {
 			t.Error("file channel did not provide the expected value")

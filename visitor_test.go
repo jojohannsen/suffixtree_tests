@@ -1,10 +1,10 @@
 package suffixtree_tests
 
 import (
-	"testing"
-	"github.com/jojohannsen/suffixtree"
 	"fmt"
+	"github.com/jojohannsen/suffixtree"
 	"sort"
+	"testing"
 )
 
 type int32arr []int32
@@ -24,10 +24,10 @@ func TestDepthVisitor(t *testing.T) {
 	go func(dfs *suffixtree.DFS, node suffixtree.Node, dvChan chan []int32) {
 		dfs.Traverse(node)
 		close(dvChan)
-	} (dfs, ukkonen.Tree().Root(), dvChan)
+	}(dfs, ukkonen.Tree().Root(), dvChan)
 	resultsAsString := make(map[string]bool)
 	expectedResults := []string{"1 4 7 10", "2 3 5 6", "8 9", "11", "0"}
-	for _,s := range expectedResults {
+	for _, s := range expectedResults {
 		resultsAsString[s] = false
 	}
 	for suffixes := range dvChan {
@@ -35,7 +35,7 @@ func TestDepthVisitor(t *testing.T) {
 		sort.Sort(result)
 		s := fmt.Sprintf("%d", result[0])
 		if len(result) > 1 {
-			for _,n := range result[1:] {
+			for _, n := range result[1:] {
 				s = fmt.Sprintf("%s %d", s, n)
 			}
 		}
@@ -48,7 +48,7 @@ func TestDepthVisitor(t *testing.T) {
 		}
 		resultsAsString[s] = true
 	}
-	for _,s := range expectedResults {
+	for _, s := range expectedResults {
 		if !resultsAsString[s] {
 			t.Errorf("Did NOT find %s", s)
 		}

@@ -1,9 +1,9 @@
 package suffixtree_tests
 
 import (
+	"fmt"
 	"github.com/jojohannsen/suffixtree"
 	"testing"
-	"fmt"
 )
 
 //Users/jojo/genomes/apis_mellifera/stripped/ame_ref_Amel_4.5_chrLG16.fa

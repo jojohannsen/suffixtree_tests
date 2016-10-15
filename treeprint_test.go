@@ -1,8 +1,8 @@
 package suffixtree_tests
 
 import (
-	"testing"
 	"github.com/jojohannsen/suffixtree"
+	"testing"
 )
 
 func TestStringTree(t *testing.T) {
