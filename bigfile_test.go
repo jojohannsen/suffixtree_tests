@@ -10,7 +10,7 @@ import (
 
 func TestBigFile(t *testing.T) {
 
-	dataSource := suffixtree.NewFileDataSource("/Users/jojo/genomes/apis_mellifera/stripped/ame_ref_Amel_4.5_chrLG16.fa")
+	dataSource, _ := suffixtree.NewFileDataSource("/Users/jojo/genomes/apis_mellifera/stripped/ame_ref_Amel_4.5_chrLG16.fa")
 	ukkonen := suffixtree.NewUkkonen(dataSource)
 
 	counter := 0

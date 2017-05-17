@@ -25,7 +25,7 @@ func TestStringDataSource(t *testing.T) {
 
 func TestFileDataSource(t *testing.T) {
 	fileContents := "mississippi"
-	fileDataSource := suffixtree.NewFileDataSource("./test_data/mississippi.txt")
+	fileDataSource,_ := suffixtree.NewFileDataSource("./test_data/mississippi.txt")
 	runes := []rune(fileContents)
 	incomingChannel := fileDataSource.STKeys()
 	for _, r := range runes {
